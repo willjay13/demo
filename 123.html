@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
+
+<script type="text/javascript" src="js/html2canvas.js"></script>
+<title></title>
+</head>
+<body>
+<style type="text/css">
+	.view{
+		width: 500px;
+		height: 500px;
+
+	}
+    .list{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .list li{
+        list-style: none;
+        border: 1px solid red;
+        width: 100%;
+    }
+</style>
+<div class="view" id="view">
+	哈哈哈哈阿萨德
+	
+	<img src="https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=342e12b86563f624035d3f03b745eb32/203fb80e7bec54e7f0e0839fb7389b504fc26a27.jpg">
+</div>
+<img class="img" src="">
+<input type="button" value="截图" onclick="takeScreenshot()">
+<div style="width:400px;">
+    <ul class="list"><li>123</li><li>啊啊啊</li><li>ee</li></ul>
+</div>
+<script type="text/javascript">
+  	function takeScreenshot() {
+  	console.log('test');
+    html2canvas(document.getElementById('view'), {
+    	useCORS: true, // 【重要】开启跨域配置
+        // allowTaint: true,//允许跨域图片
+        onrendered: function(canvas) {
+        	var url = canvas.toDataURL("image/jpeg");
+            $(".img").attr("src",url);
+        },
+    });
+}
+ </script>
+</body>
+</html> 
