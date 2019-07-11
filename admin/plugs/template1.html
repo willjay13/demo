@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>网站后台管理模版</title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css"/>
+		<link rel="stylesheet" href="../../static/common/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="../../static/common/codemirror/theme/monokai.css">
+		<script src="../../static/common/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/common/js/common.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="email-content-title layui-form">
+			<span class="write-title">文本框光标处插入内容</span>
+		</div>
+		<div class="layui-tab page-content-wrap">
+		  	<div class="wrap-container">
+			    <div class="layui-tab-item layui-show">
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>代码</li>
+						</ul>
+						<textarea width="100%" height="700" scrolling="no" id="code">
+<style type="text/css">
+	.test-input{
+		width: 200px;
+		height: 30px;
+		padding:0 10px;
+		border: 1px solid #333;
+	}
+</style>
+<input type="" name="" class="test-input" value="123">
+<button class="js-enter">插入</button>
+<script>
+	$(function(){
+		$(".js-enter").click(function() {
+			var val = "测试";
+			//插入
+			$(".test-input").insertAtCaret(val);
+		});
+	})
+	// 源码演示
+	$.fn.extend({
+    // 光标处插入
+	    insertAtCaret : function (myValue) {
+	        var $t = $(this)[0];
+	        if (document.selection) {
+	            this.focus();
+	            sel = document.selection.createRange();
+	            sel.text = myValue;
+	            this.focus();
+	        } else
+	        if ($t.selectionStart || $t.selectionStart == '0') {
+	            var startPos = $t.selectionStart;
+	            var endPos = $t.selectionEnd;
+	            var scrollTop = $t.scrollTop;
+	            $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+	            this.focus();
+	            $t.selectionStart = startPos + myValue.length;
+	            $t.selectionEnd = startPos + myValue.length;
+	            $t.scrollTop = scrollTop;
+	        } else {
+	            this.value += myValue;
+	            this.focus();
+	        }
+	    }
+	});
+</script>
+						</textarea>
+						<button class="layui-btn layui-btn-normal f-r js-submit">提交</button>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>演示</li>
+						 </ul>
+						 <div id="show"></div>
+			    	</div>
+			    </div>
+		  </div>
+		</div>
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="../../static/common/codemirror/lib/codemirror.js"></script>
+	    <script src="../../static/common/codemirror/addon/edit/closetag.js"></script>
+	    <script src="../../static/common/codemirror/mode/xml/xml.js"></script>
+	    <script src="../../static/common/codemirror/mode/javascript/javascript.js"></script>
+	    <script src="../../static/common/codemirror/mode/css/css.js"></script>
+	    <script src="../../static/common/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+	    <script>
+			$(function(){
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"),{
+					tabSize:4,
+			        styleActiveLine: true, // 当前行背景高亮
+			        matchBrackets: true,   // 括号匹配
+			        mode: 'htmlmixed',     // HMTL混合模式
+			        lineWrapping: true,    // 自动换行
+			        theme: 'monokai',   
+				});
+				$("#show").html(editor.getValue());
+				$(".js-submit").click(function() {
+					$("#show").html(editor.getValue());
+				});
+			});
+	    </script>
+	</body>
+</html>

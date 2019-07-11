@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css"/>
+		<link rel="stylesheet" href="../../static/common/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="../../static/common/codemirror/theme/monokai.css">
+		<script src="../../static/common/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/common/js/common.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="email-content-title layui-form">
+			<span class="write-title">侧边栏导航</span>
+		</div>
+		<div class="layui-tab page-content-wrap">
+		  	<div class="wrap-container">
+			    <div class="layui-tab-item layui-show">
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>代码</li>
+						</ul>
+							<textarea width="100%" height="700" scrolling="no" id="code">
+<style>
+input[type="checkbox"], 
+input[type="radio"]{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+.cont{
+	margin-top:20px;
+}
+.box{
+	overflow: hidden;
+}
+.box li{
+	float: left;
+	margin-right: 10px;
+}
+
+.icon{
+	display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    padding: 0;
+    border: 0;
+    vertical-align: top;
+    background-image: url(../../static/admin/images/checkbox.png);
+    background-repeat: no-repeat;
+}
+.icon-checkbox, .icon-checked, .icon-radio, .icon-radio-true {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+.icon-checkbox {
+    background-position:  -2px -18px;
+}
+.icon-checked {
+    background-position: -2px 0;
+}
+.icon-radio {
+    background-position:  -23px -18px;
+}
+.icon-radio-true {
+    background-position: -23px  0;
+}
+</style>
+<br>
+<p>多选框</p>
+<div class="cont">
+     <label class="checkbox" data-id="all" data-group="group1">
+		 <input type="checkbox"  class="hide">
+		 <i class="icon icon-checkbox"></i>全选
+	 </label>
+	  <ul class="box">
+	  	<li>
+		  <label class="checkbox active" data-id="1" data-group="group1">
+			  <input type="checkbox"  class="hide" checked="checked">
+			  <i class="icon icon-checkbox icon-checked"></i>.com
+		  </label>
+		</li>
+		<li>
+		  <label class="checkbox" data-id="2" data-group="group1">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>.cn
+		  </label>
+	  	</li>
+	    <li>
+		  <label class="checkbox" data-id="3" data-group="group1">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>.net
+		  </label>
+	  	</li>
+	    <li>
+		  <label class="checkbox" data-id="4" data-group="group1">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>.org
+		  </label>
+	  	</li>
+	  </ul>
+</div>
+<div class="cont">
+     <label class="checkbox" data-id="all" data-group="group2">
+		 <input type="checkbox"  class="hide">
+		 <i class="icon icon-checkbox"></i>全选
+	 </label>
+	  <div class="box">
+		  <label class="checkbox" data-id="1" data-group="group2">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>11
+		  </label>
+		  <label class="checkbox" data-id="2" data-group="group2">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>22
+		  </label>
+		  <label class="checkbox" data-id="3" data-group="group2">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>33
+		  </label>
+		  <label class="checkbox" data-id="4" data-group="group2">
+			  <input type="checkbox"  class="hide">
+			  <i class="icon icon-checkbox"></i>44
+		  </label>
+	  </div>
+</div>
+<br>
+<p>单选框</p>
+<div class="cont">
+	<ul class="radio-ul">
+        <li>
+			<label class="radio" data-id="1">
+				<input type="radio" name="radioName" checked>
+				<i class="icon icon-radio icon-radio-true middle"></i>
+				<span class="middle">大鱼</span>
+			</label>
+		</li>
+		<li>
+			<label class="radio" data-id="2">
+				<input type="radio" name="radioName">
+				<i class="icon icon-radio  middle"></i>
+				<span class="middle">小虾</span>
+			</label>
+		</li>
+		<li>
+		<label class="radio" data-id="3">
+			<input type="radio" name="radioName">
+			<i class="icon icon-radio  middle"></i>
+			<span class="middle">大闸蟹</span>
+		</label>
+	</li>
+	</ul>
+</div>
+<div class="cont">
+	<ul class="radio-ul">
+        <li>
+			<label class="radio" data-id="1">
+				<input type="radio" name="radioName" checked>
+				<i class="icon icon-radio icon-radio-true middle"></i>
+				<span class="middle">AA</span>
+			</label>
+		</li>
+		<li>
+			<label class="radio" data-id="2">
+				<input type="radio" name="radioName">
+				<i class="icon icon-radio  middle"></i>
+				<span class="middle">BB</span>
+			</label>
+		</li>
+		<li>
+		<label class="radio" data-id="3">
+			<input type="radio" name="radioName">
+			<i class="icon icon-radio  middle"></i>
+			<span class="middle">CC</span>
+		</label>
+	</li>
+	</ul>
+</div>
+<br>
+<p>单个选框</p>
+<div class="cont2">
+	<label class="radio js-single" data-id="1">
+		<input type="radio" name="radio" checked>
+		<i class="icon icon-radio icon-radio-true middle"></i>
+		<span class="middle">大鱼</span>
+	</label>
+	<label class="radio js-single" data-id="0">
+		<input type="radio" name="radio">
+		<i class="icon icon-radio middle"></i>
+		<span class="middle">小夏</span>
+	</label>
+</div>
+<script>
+	$(function(){
+		$(".cont").checkbox({
+	    	btn: ".checkbox",      			 //btn 当前点击的复选框
+            parNode: ".box",                 //parNode 当前点击的复选框的最外层父节点
+            icon : ".icon",           		 //icon默认图标
+            iconActive  : "icon-checked",    //iconActive 选中后图标       
+	    }); 
+
+	    $(".cont").radio({
+	    	btn: ".radio",     		       	   //btn 当前点击的单选框
+            parNode: ".cont",                  //parNode 当前点击的单选框的最外层父节点
+            icon : ".icon",                    //icon默认图标
+            iconActive  : "icon-radio-true",   //iconActive 选中后图标       
+	    }); 
+
+	    $(".cont2").radio({
+	    	btn: ".radio",     		       //btn 当前点击的单选框
+            icon : ".icon",                    //icon默认图标
+            iconActive  : "icon-radio-true",   //iconActive 选中后图标       
+	    	type:'single',					   //type 类型是单个
+	    }); 
+	})
+</script>
+							</textarea>
+						<button class="layui-btn layui-btn-normal f-r js-submit">提交</button>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>演示</li>
+						 </ul>
+						 <div id="show"></div>
+			    	</div>
+			    </div>
+		  </div>
+		</div>
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="../../static/common/codemirror/lib/codemirror.js"></script>
+	    <script src="../../static/common/codemirror/addon/edit/closetag.js"></script>
+	    <script src="../../static/common/codemirror/mode/xml/xml.js"></script>
+	    <script src="../../static/common/codemirror/mode/javascript/javascript.js"></script>
+	    <script src="../../static/common/codemirror/mode/css/css.js"></script>
+	    <script src="../../static/common/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+	    <script>
+			$(function(){
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"),{
+					tabSize:4,
+			        styleActiveLine: true, // 当前行背景高亮
+			        matchBrackets: true,   // 括号匹配
+			        mode: 'htmlmixed',     // HMTL混合模式
+			        lineWrapping: true,    // 自动换行
+			        theme: 'monokai',   
+				});
+				$("#show").html(editor.getValue());
+				$(".js-submit").click(function() {
+					$("#show").html(editor.getValue());
+				});
+			});
+	    </script>
+	</body>
+</html>

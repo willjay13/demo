@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css"/>
+		<link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css"/>
+		<link rel="stylesheet" href="../../static/common/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="../../static/common/codemirror/theme/monokai.css">
+		<script src="../../static/common/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../static/common/js/common.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="email-content-title layui-form">
+			<span class="write-title">时间倒计时</span>
+		</div>
+		<div class="layui-tab page-content-wrap">
+		  	<div class="wrap-container">
+			    <div class="layui-tab-item layui-show">
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>代码</li>
+						</ul>
+							<textarea width="100%" height="700" scrolling="no" id="code">
+<style>
+
+</style>
+	<div class="zzsc-content bgcolor-8">
+		<p>距离2020年1月1日10点10分10秒还有：</p>
+		<p id="clock"></p>
+		<p id="clock2"></p>
+		<p id="clock3"></p>
+		<p id="clock4"></p>
+	</div>
+<script type="text/javascript" src="../../static/common/js/jquery.countdown.min.js"></script>
+<script>
+	$(function(){
+		$('.zzsc-content').countdown('2020/1/1 10:10:10', function(event) {
+		  	$("#clock").html(event.strftime('%D 天 %H:%M:%S'));
+
+		  	$("#clock2").html(event.strftime(''
+			+ '<span>%w</span> 星期 '
+			+ '<span>%d</span> 天 '
+			+ '<span>%H</span> 小时 '
+			+ '<span>%M</span> 分钟 '
+			+ '<span>%S</span> 秒'));
+
+			$("#clock3").html(event.strftime('%m 个月 和 %n 天'));
+
+			var totalHours = event.offset.totalDays * 24 + event.offset.hours;
+		    $("#clock4").html(event.strftime(totalHours + ' 小时 %M 分钟 %S 秒'));
+		});
+	})
+</script>
+							</textarea>
+						<button class="layui-btn layui-btn-normal f-r js-submit">提交</button>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<ul class="layui-tab-title">
+						    <li>演示</li>
+						 </ul>
+						 <div id="show"></div>
+			    	</div>
+			    </div>
+		  </div>
+		</div>
+		<script type="text/javascript" src="../../static/common/js/jquery.countdown.min.js"></script>
+		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	    <script src="../../static/common/codemirror/lib/codemirror.js"></script>
+	    <script src="../../static/common/codemirror/addon/edit/closetag.js"></script>
+	    <script src="../../static/common/codemirror/mode/xml/xml.js"></script>
+	    <script src="../../static/common/codemirror/mode/javascript/javascript.js"></script>
+	    <script src="../../static/common/codemirror/mode/css/css.js"></script>
+	    <script src="../../static/common/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+	    <script>
+			$(function(){
+				var editor = CodeMirror.fromTextArea(document.getElementById("code"),{
+					tabSize:4,
+			        styleActiveLine: true, // 当前行背景高亮
+			        matchBrackets: true,   // 括号匹配
+			        mode: 'htmlmixed',     // HMTL混合模式
+			        lineWrapping: true,    // 自动换行
+			        theme: 'monokai',   
+				});
+				$("#show").html(editor.getValue());
+				$(".js-submit").click(function() {
+					$("#show").html(editor.getValue());
+				});
+			});
+	    </script>
+	</body>
+</html>
